@@ -13,6 +13,7 @@ public class CharacterMain : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//スペースキーで上ジャンプ
 		if(Input.GetKeyDown(KeyCode.Space)){
 			rb.AddForce(transform.up * jump);
 		}
