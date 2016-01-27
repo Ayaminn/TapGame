@@ -13,7 +13,7 @@ public class CharacterMain : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		coll = transform.findchild ("On").GetComponent<Coll> ().nowOn;
+		//coll = transform.findchild ("On").GetComponent<Coll> ().nowOn;
 
 		rb = GetComponent<Rigidbody> ();
 
@@ -63,9 +63,12 @@ public class CharacterMain : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKeyDown(KeyCode.Space) && onGround == true) {
+		if (Input.GetKeyDown(KeyCode.Space) && onGround) {
 			//ジャンプ
-			rb.AddForce(transform.up * jump);
+			if(rb.velocity.y < 0.2f) {
+				rb.AddForce(transform.up * jump);
+			}
+
 		}
 
 		if (Input.GetKey(KeyCode.UpArrow) && camera2D == false){
