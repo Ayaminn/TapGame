@@ -7,24 +7,31 @@ public class CharacterMain : MonoBehaviour {
 	public float jump;
 	Camera _2DCamera;
 	Camera _3DCamera;
-	public bool camera2D = true; 
+	public bool camera2D = true;
+	public bool onGround = false;
+	Coll coll;
 
 	// Use this for initialization
 	void Start () {
+		coll = transform.findchild ("On").GetComponent<Coll> ().nowOn;
+
 		rb = GetComponent<Rigidbody> ();
+
 		_2DCamera = GameObject.Find("2D Camera").GetComponent<Camera>();
 		_3DCamera = GameObject.Find ("3D Camera").GetComponent<Camera> ();
-
 		_3DCamera.enabled = false;
+	}
+
+	void OnCollisionEnter(Collision col){
+		onGround = true;
+	}
+
+	void OnCollisionExit(Collision col){
+		onGround = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			//ジャンプ
-			rb.AddForce(transform.up * jump);
-		}
-
 		if (Input.GetKeyDown(KeyCode.A)) {
 			//カメラ切り替え
 			if(_2DCamera.enabled){
@@ -54,6 +61,11 @@ public class CharacterMain : MonoBehaviour {
 			} else {
 				transform.position += new Vector3 (0, 0, 0.1f);
 			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.Space) && onGround == true) {
+			//ジャンプ
+			rb.AddForce(transform.up * jump);
 		}
 
 		if (Input.GetKey(KeyCode.UpArrow) && camera2D == false){
