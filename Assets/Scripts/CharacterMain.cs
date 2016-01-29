@@ -53,29 +53,21 @@ public class CharacterMain : MonoBehaviour {
 			} else {
 				transform.position += new Vector3 (0, 0, -0.1f);
 			}
-		}
-
-		if (Input.GetKey(KeyCode.LeftArrow)) {
+		} else if (Input.GetKey(KeyCode.LeftArrow)) {
 			if (camera2D == true){
 				transform.position += new Vector3 (-0.1f, 0, 0);
 			} else {
 				transform.position += new Vector3 (0, 0, 0.1f);
 			}
-		}
-
-		if (Input.GetKeyDown(KeyCode.Space) && onGround) {
+		} else if (Input.GetKeyDown(KeyCode.Space) && onGround) {
 			//ジャンプ
 			if(rb.velocity.y < 0.2f) {
 				rb.AddForce(transform.up * jump);
 			}
 
-		}
-
-		if (Input.GetKey(KeyCode.UpArrow) && camera2D == false){
+		} else if (Input.GetKey(KeyCode.UpArrow) && camera2D == false) {
 			transform.position += new Vector3 (0.1f, 0, 0);
-		}
-
-		if (Input.GetKey(KeyCode.DownArrow) && camera2D == false){
+		} else if (Input.GetKey(KeyCode.DownArrow) && camera2D == false) {
 			transform.position += new Vector3 (-0.1f, 0, 0);
 		}
 	}
