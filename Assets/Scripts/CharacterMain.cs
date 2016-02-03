@@ -94,10 +94,18 @@ public class CharacterMain : MonoBehaviour {
 				rb.AddForce(transform.up * jump);
 			}
 
-		} else if (Input.GetKey(KeyCode.UpArrow) && camera2D == true) {
-			transform.position += new Vector3 (0.1f, 0, 0);
-		} else if (Input.GetKey(KeyCode.DownArrow) && camera2D == true) {
-			transform.position += new Vector3 (-0.1f, 0, 0);
+		} else if (Input.GetKey(KeyCode.UpArrow) && camera2D == false) {
+			if (rightCamera3D == true) {
+				transform.position += new Vector3 (0.1f, 0, 0);
+			} else {
+				transform.position += new Vector3 (-0.1f, 0, 0);
+			}
+		} else if (Input.GetKey(KeyCode.DownArrow) && camera2D == false) {
+			if (rightCamera3D == true) {
+				transform.position += new Vector3 (-0.1f, 0, 0);
+			} else {
+				transform.position += new Vector3 (0.1f, 0, 0);
+			}
 		}
 	}
 }
