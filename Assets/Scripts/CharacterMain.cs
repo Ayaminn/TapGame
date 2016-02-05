@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class CharacterMain : MonoBehaviour {
-
+	//y 24
 	public Rigidbody rb;
 	public float jump;
 	Camera _2DCamera;
